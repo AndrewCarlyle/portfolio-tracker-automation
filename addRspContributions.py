@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os.path
 
 from google.auth.transport.requests import Request
@@ -7,19 +5,21 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from datetime import datetime
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-#SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 PORTFOLIO_SPREADSHEET_ID = '14MXCb90sj_Ic_lYDU1ibYEQ0YBaQOuBt-bEO0hn7za8'
-#SAMPLE_RANGE_NAME = 'RSP Contributions!D2:D'
-SAMPLE_RANGE_NAME = 'Sheet5!A1:B1'
+SAMPLE_RANGE_NAME = 'RSP Contributions!A2:C2'
+
 
 class contributionAutomation:
 
-    def __init__(self):
+    def __init__(self, contributionAmount):
+        self.amount = contributionAmount
+
         self.creds = None
         self.authenticate()
 
@@ -48,17 +48,16 @@ class contributionAutomation:
         except HttpError as err:
             print(err)
     
-    def writeValueToSheet(self, amount):
+    def writeValueToSheet(self):
         try:
             # Call the Sheets API
             sheet = self.service.spreadsheets()
             result = sheet.values().append(spreadsheetId=PORTFOLIO_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME, valueInputOption='USER_ENTERED', body=dict(
                 majorDimension="ROWS",
                 values=[
-                    [amount, amount]
+                    [self.date, self.amount, self.amount]
                 ])).execute()
             print(result)
-            values = result.get('values', [])
 
         except HttpError as err:
             print(err)
@@ -81,11 +80,15 @@ class contributionAutomation:
                 token.write(self.creds.to_json())
 
 def getDate():
-    return -1
+    # Get the current date + format
+    current_date = datetime.now()
+    formatted_date = current_date.strftime("%B %d, %Y").replace(" 0", " ")
+
+    return formatted_date
 
 def main():
-    contrAutomation = contributionAutomation()
-    contrAutomation.writeValueToSheet(163.46)
+    contrAutomation = contributionAutomation(contributionAmount=163.46)
+    contrAutomation.writeValueToSheet()
 
 if __name__ == '__main__':
     main()
