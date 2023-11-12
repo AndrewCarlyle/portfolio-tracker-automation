@@ -13,7 +13,7 @@ from logging.handlers import RotatingFileHandler
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # The ID and range of a sample spreadsheet.
-PORTFOLIO_SPREADSHEET_ID = '14MXCb90sj_Ic_lYDU1ibYEQ0YBaQOuBt-bEO0hn7za8'
+PORTFOLIO_SPREADSHEET_ID = '1M6ZNA_O1-T90ASBvttFo_hNroYqYCJKD_5SAjmBT1wg'
 SAMPLE_RANGE_NAME = 'RSP Contributions!A2:C2'
 
 # Set up logging
@@ -21,7 +21,7 @@ LOG_DIRECTORY = '/var/log/financeJobs'
 LOG_FILE_PATH = f'{LOG_DIRECTORY}/rspUpdate.log'
 
 #Path to directory where the .json files are stored
-DIR_PATH = '/Users/andre/Documents/portfolio-tracker-automation'
+DIR_PATH = '/Users/andre/Workspace/portfolio-tracker-automation'
 
 logging.basicConfig(
     level=logging.INFO,
