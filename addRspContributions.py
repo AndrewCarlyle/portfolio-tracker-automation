@@ -1,17 +1,8 @@
 import logging
 
-'''from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError'''
-from google.auth.exceptions import RefreshError
 from googleSheetsWriter import GoogleSheetsWriter
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
-
-# If modifying these scopes, delete the file token.json.
-#SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # The ID and range of a sample spreadsheet.
 PORTFOLIO_SPREADSHEET_ID = '1M6ZNA_O1-T90ASBvttFo_hNroYqYCJKD_5SAjmBT1wg'
