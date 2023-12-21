@@ -30,7 +30,7 @@ class GoogleSheetsWriter:
             sheet = self.service.spreadsheets()
             result = sheet.values().update(spreadsheetId=spreadsheet, range=cellRange, valueInputOption='USER_ENTERED', body=dict(
                 majorDimension="ROWS",
-                values=[values])
+                values=values)
             ).execute()
             
             print(f"Update result:{result}")
