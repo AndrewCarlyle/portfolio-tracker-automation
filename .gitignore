@@ -1,5 +1,6 @@
 credentials.json
 token.json
+finance_venv
 
 .DS_Store
 

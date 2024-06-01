@@ -22,12 +22,12 @@ def main():
 
     print(f"Total Wealthsimple cash balance: {wsCashTotal}")
 
-    numPsaShares = ws.getPsaShareCount()
+    #numPsaShares = ws.getPsaShareCount()
 
-    print(f"Found {numPsaShares} shares of PSA.TO")
+    #print(f"Found {numPsaShares} shares of PSA.TO")
 
     writer = GoogleSheetsWriter()
-    writer.writeValueToSheet(PORTFOLIO_SPREADSHEET_ID, IBKR_CELL_NUM, [[str(ibkrCashTotal)], [str(wsCashTotal)], [str(numPsaShares)]])
+    writer.writeValueToSheet(PORTFOLIO_SPREADSHEET_ID, IBKR_CELL_NUM, [[str(ibkrCashTotal)], [str(wsCashTotal)]])
 
 if __name__ == '__main__':
     main()
