@@ -1,4 +1,4 @@
-#Portfolio Tracker Automation
+# Portfolio Tracker Automation
 
 A collection of scripts used for automation the updating processes for my personal finance spreadsheet.
 
